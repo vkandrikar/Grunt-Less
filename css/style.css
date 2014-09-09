@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* 
+	CSS Document 
+	to convert less to css using grunt: http://www.wearecube.ch/from-less-to-css-with-grunt-js/
+*/
+#mainWrapper {
+  font-size: 18px;
+  color: #5b83ad;
+}
+#mainWrapper .topSection li {
+  font-size: 14px;
+  color: #b094ff;
+}
+#mainWrapper .bottomSection {
+  width: 300px;
+  background-color: #999;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+}
+#mainWrapper .bottomSection li {
+  font-size: 22px;
+}
