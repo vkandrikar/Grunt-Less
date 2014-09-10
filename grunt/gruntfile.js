@@ -12,10 +12,6 @@ module.exports = function(grunt) {
 		},
 		
 		jsbeautifier: {
-			options: {
-				mode:"VERIFY_ONLY"
-			},
-			
 			//files: ["../js/main.js", "../sample1.html"] //main.js & sample.html
 			//files: ["../sample1.html"] //only sample1.html
 			//files: ["../*.html"] //all html files
