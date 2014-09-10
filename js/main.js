@@ -25,7 +25,7 @@ $(document).ready( function ( evt ) {
     function onComplete ( obj ) {
         console.log( obj );
         obj.animate( {
-            opacity: '0.5'
+            height: '350px'
         }, 1000 );
     }
 	

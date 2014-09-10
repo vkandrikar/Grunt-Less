@@ -2,36 +2,91 @@
 /* 
 	CSS Document 
 	to convert less to css using grunt: http://www.wearecube.ch/from-less-to-css-with-grunt-js/
+	
+	base concepts of less are : nesting, variables, mixins, parametric mixins, opretions(+, -, *, /).
+	
+	it also provide some color functions:
+		1) darken() and lighten(), which add some black or white,
+		2) saturate() and desaturate(), to make a color more “colorful” or more “grayscale”,
+		3) fadein() and fadeout(), to increase or reduce transparency,
+		4) spin(), which modifies the hue of the color.	
+		
+	we can use pseudo-classes with '&'
+		e.g. .classname { color: red; &:hover { color: green } }
+	
+	we can importing file into another less file
+		@import 'test.less';
+	or
+		@import 'test';
 */
 
+/******************************
+     IMPORTING OTHER LESS
+*******************************/
+@import 'variables';
+
+/**********************
+       CONSTANTS
+***********************/
 @baseFontSize: 18px;
 @blue: #5B83AD;
+@baseRadius: 10px;
 
-.RoundBorders (@radius) {
+/*********************************
+   OPERATIONS & COLOR FUNCTIONS
+**********************************/
+@lightBlue: @blue - #111;
+@darkBlue: @blue + #111;
+@newColor: lighten(saturate(@blue, 60%), 20%);
+
+/**********************
+        MIXINS
+***********************/
+.RoundBorders (@radius: @baseRadius) {
   border-radius: @radius;
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
 }
 
+.Round {
+    .RoundBorders(5px);
+	width: 100px;
+	background-color: #B6393B;
+}
+ 
+/**********************
+         STYLES
+***********************/
 #mainWrapper {
 	font-size: @baseFontSize;
-	color: @blue;
+	color: @newColor;
 	
 	.topSection {
+		width: 300px;
+		background-color: spin(@lightBlue, 50);;
+		.RoundBorders();
+		
 		li {
 			font-size: @baseFontSize - 4;
 			color: @blue + #515;
+			margin: @marginTop @marginLeft;
+			.Round();
 		}
 	}
 	
 	.bottomSection {
 		width: 300px;
-		background-color: #999;
+		background-color: darken(@blue, 5%);
 		
 		.RoundBorders(20px);
 		
 		li {
 			font-size: @baseFontSize + 4;
+			
+			&:hover {
+				color: @blue * 40;
+				text-decoration: underline;
+			}
 		}
 	}
 }
