@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
 	grunt.initConfig({	
 		less: {
+			//need to keep options & files in one parent node, we name it anything
 			development: {
 				options: {
 					paths: ["../css"],
